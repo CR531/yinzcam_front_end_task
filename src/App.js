@@ -6,10 +6,13 @@ import axios from 'axios';
 
 class App extends React.Component {
 
-  state = {
-    currentPage: 1,
-    api_response: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentPage: 1,
+      api_response: []
+    };
+  }
 
   apicall = async (page) => {
     await axios.get(`https://api.github.com/users?since=${page}`)
@@ -23,22 +26,23 @@ class App extends React.Component {
   componentDidMount() {
     this.apicall(this.state.currentPage);
   }
-  handleChange = numPage => {
-    this.setState({ currentPage: numPage });
-    this.apicall(numPage);
+  handleChange = async (numPage) => {
+    await this.setState({ currentPage: numPage, api_response: [] });
+    this.apicall(this.state.currentPage);
   };
   render() {
     return (
       <div>
         <h2>Front End Developer Take Home Assessment</h2>
-        <Usercomponent data={this.state.api_response} />
+        <h2>Current Page : {this.state.currentPage}</h2>
         <Pagination
           currentPage={this.state.currentPage}
           totalSize={100}
           changeCurrentPage={this.handleChange}
           theme="bootstrap"
         />
-        <h2>current Page:{this.state.currentPage}</h2>
+        {this.state.api_response && this.state.api_response.length > 0 &&
+          <Usercomponent userdata={this.state.api_response} />}
       </div>
     );
   }
