@@ -20,7 +20,13 @@ code {
 .detail_table{
   table-layout: fixed;
   margin-left: 8%;
-  width: 30%;
+    text-align: center;
+    border-spacing: 0;
+    border: 1px solid black;
+}
+.info_table{
+  table-layout: fixed;
+  margin-left: 8%;
     text-align: center;
     border-spacing: 0;
     border: 1px solid black;
@@ -37,4 +43,7 @@ code {
 }
 .leftmargin{
   margin-left: 8%;
+}
+.center_css{
+  text-align: center;
 }
