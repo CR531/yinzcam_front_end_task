@@ -31,7 +31,10 @@ class UserInfo extends React.Component {
         const { userinfo } = this.props;
         return (
             <div>
-                <h3>User Repositories Information</h3>
+                <h3>User Repositories Information <button className="button_css" onClick={this.props.handleBackClick}>
+                    Back
+                </button></h3>
+
                 {userinfo &&
                     <table className="info_table">
                         <thead>
@@ -43,11 +46,11 @@ class UserInfo extends React.Component {
                         </thead>
                         {this.state.repoInfo && this.state.repoInfo.length > 0 && this.state.repoInfo.map((record, index) => {
                             return (
-                                <tbody>
+                                <tbody key={index}>
                                     <tr key={index}>
-                                        <td className="table_data"><h3>{record.id}</h3></td>
-                                        <td className="table_data"><h3>{record.name}</h3></td>
-                                        <td className="table_data"><h3>{record.full_name}</h3></td>
+                                        <td className="table_data" key={record.id}><h3>{record.id}</h3></td>
+                                        <td className="table_data" key={record.name}><h3>{record.name}</h3></td>
+                                        <td className="table_data" key={record.full_name}><h3>{record.full_name}</h3></td>
                                     </tr>
                                 </tbody>
                             );
@@ -66,11 +69,11 @@ class UserInfo extends React.Component {
                         </thead>
                         {this.state.followersInfo && this.state.followersInfo.length > 0 && this.state.followersInfo.map((record, index) => {
                             return (
-                                <tbody>
+                                <tbody key={index}>
                                     <tr key={index}>
-                                        <td className="table_data"><h3>{record.id}</h3></td>
-                                        <td className="table_data"><h3>{record.login}</h3></td>
-                                        <td className="table_data"><h3>{record.url}</h3></td>
+                                        <td className="table_data" key={record.id}><h3>{record.id}</h3></td>
+                                        <td className="table_data" key={record.login}><h3>{record.login}</h3></td>
+                                        <td className="table_data" key={record.url}><h3>{record.url}</h3></td>
                                     </tr>
                                 </tbody>
                             );

@@ -20,6 +20,7 @@ code {
 .detail_table{
   table-layout: fixed;
   margin-left: 8%;
+  width: 30%;
     text-align: center;
     border-spacing: 0;
     border: 1px solid black;
@@ -46,4 +47,9 @@ code {
 }
 .center_css{
   text-align: center;
+}
+.button_css{
+  height: 30px;
+  width: 3%;
+  margin-left: 15%;
 }

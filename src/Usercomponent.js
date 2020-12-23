@@ -71,6 +71,9 @@ class Usercomponent extends Component {
         e.preventDefault();
         await this.setState({ ...this.state, userInfoRecord: record, showDetail: true });
     }
+    handleBackClick = () => {
+        this.setState({ ...this.state, showDetail: false, sorted_data: this.state.userdata });
+    }
     render() {
         const loadingCSS = {
             height: "100px",
@@ -81,7 +84,7 @@ class Usercomponent extends Component {
             <div className="container">
                 <div style={{ minHeight: "800px" }}>
                     {this.state.showDetail &&
-                        <UserInfo userinfo={this.state.userInfoRecord} />
+                        <UserInfo userinfo={this.state.userInfoRecord} handleBackClick={this.handleBackClick} />
                     }
                     {!this.state.showDetail && <div>
                         <h2 className="leftmargin">List of Users</h2>
@@ -100,9 +103,9 @@ class Usercomponent extends Component {
                             </thead>
                             {this.state.sorted_data && this.state.sorted_data.length > 0 && this.state.sorted_data.map((record, index) => {
                                 return (
-                                    <tbody>
+                                    <tbody key={index}>
                                         <tr key={record.id}>
-                                            <td className="table_data">
+                                            <td className="table_data" key={index}>
                                                 <img
                                                     style={{ width: "30%", height: "30%" }}
                                                     src={record.avatar_url}
@@ -110,7 +113,7 @@ class Usercomponent extends Component {
                                                 >
                                                 </img>
                                             </td>
-                                            <td className="table_data"><h3>
+                                            <td className="table_data" key={record.login}><h3>
                                                 <a href="/user_info" onClick={(e) => this.handleRecordClick(record, e)}>{record.login}</a>
                                             </h3></td>
                                         </tr>
