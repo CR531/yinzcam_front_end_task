@@ -34,7 +34,6 @@ class App extends React.Component {
     return (
       <div>
         <h2>Front End Developer Take Home Assessment</h2>
-        <h2>Current Page : {this.state.currentPage}</h2>
         <Pagination
           currentPage={this.state.currentPage}
           totalSize={100}

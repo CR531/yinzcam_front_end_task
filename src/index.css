@@ -13,12 +13,28 @@ code {
 }
 .input {
   width: 20%;
+  margin-left: 8%;
   font-size: 1em;
   padding: 0.5em 0.75em;
 }
 .detail_table{
+  table-layout: fixed;
+  margin-left: 8%;
+  width: 30%;
     text-align: center;
+    border-spacing: 0;
+    border: 1px solid black;
+}
+.table_data{
+  margin: 0;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
 }
 .td_css{
   width: 20%;
+}
+.leftmargin{
+  margin-left: 8%;
 }

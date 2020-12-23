@@ -28,12 +28,15 @@ class Usercomponent extends Component {
         });
         await this.setState({ ...this.state, sorted_data: updatedList });
     };
+    onRowClick = (record) => {
+        console.log("Row Clicked" + record.login)
+    }
     render() {
         return (
             <div>
-                {this.state.sorted_data && this.state.sorted_data.length > 0 &&
+                {this.state.sorted_data &&
                     <div>
-                        <h2>List of Users</h2>
+                        <h2 className="leftmargin">List of Users</h2>
                         {this.state.userdata && this.state.userdata.length > 0 && <input
                             className="input" type="text"
                             id="search"
@@ -43,29 +46,37 @@ class Usercomponent extends Component {
                         <table className="detail_table">
                             <thead>
                                 <tr>
-                                    <th><h2>User Avatar</h2></th>
-                                    <th><h2>User Login</h2></th>
+                                    <th><h3>User Avatar</h3></th>
+                                    <th><h3>User Login</h3></th>
                                 </tr>
                             </thead>
                             {this.state.sorted_data && this.state.sorted_data.length > 0 && this.state.sorted_data.map((record, index) => {
                                 return (
                                     <tbody>
-                                        <tr key={index}>
-                                            <td><img
-                                                style={{ width: "30%", height: "30%" }}
-                                                src={record.avatar_url}
-                                                alt="avatar"
-                                            >
-                                            </img></td>
-                                            <td><h3>{record.login}</h3></td>
+                                        <tr key={index} onClick={() => this.onRowClick(record)}>
+                                            <td className="table_data">
+                                                <img
+                                                    style={{ width: "30%", height: "30%" }}
+                                                    src={record.avatar_url}
+                                                    alt="avatar"
+                                                >
+                                                </img>
+                                            </td>
+                                            <td className="table_data"><h3>{record.login}</h3></td>
                                         </tr>
                                     </tbody>
                                 );
                             })
                             }
+                            {this.state.sorted_data && this.state.sorted_data.length === 0 &&
+                                <tbody>
+                                    <tr><td colSpan="2" className="table_data">No records found for the search criteria</td></tr>
+                                </tbody>
+                            }
                         </table>
                     </div>
                 }
+
             </div>
         );
     }
